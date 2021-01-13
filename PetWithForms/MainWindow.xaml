@@ -1,0 +1,244 @@
+﻿<Window x:Class="PetWithForms.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PetWithForms"
+        mc:Ignorable="d"
+        Title="Tamagochi Pet" Height="350" Width="525">
+<!--Being my first attempt at XAML interface, lots of this is probably quite messy,
+with redundant things, or things done in over-complex ways
+
+There are currently two grid setups, Start, and Play, 
+which are switched when the game starts, to create 
+the loading screen/gameplay screen
+
+-->
+    
+
+    
+    
+    
+    <Grid>
+        <Grid x:Name="Start">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition
+                    Width="50">
+
+                </ColumnDefinition>
+                <ColumnDefinition>
+
+                </ColumnDefinition>
+                <ColumnDefinition
+                    Width="50">
+
+                </ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition
+                    Height="60">
+                </RowDefinition>
+                <RowDefinition
+                    Height="60">
+
+                </RowDefinition>
+                <RowDefinition
+                    Height="60">
+
+                </RowDefinition>
+                <RowDefinition>
+                    
+                </RowDefinition>
+            </Grid.RowDefinitions>
+
+
+
+            <TextBlock
+                Grid.Row="0" 
+                Grid.Column="1" 
+                FontSize="40" 
+                HorizontalAlignment="Center">
+                Tamagochi Pet
+            </TextBlock>
+            <TextBlock Grid.Row="1" Grid.Column="1" 
+                       HorizontalAlignment="Center">
+                Enter a name for your pet
+            </TextBlock>
+            <TextBox
+                Height="20"
+                x:Name="name_input"
+                Grid.Column="1"
+                Grid.Row="1"
+                HorizontalAlignment="Center"
+                Width="150">
+                
+            </TextBox>
+            <TextBlock
+                Grid.Row="2" 
+                Grid.Column="1"
+                HorizontalAlignment="Center">
+                <Button Content="Start" 
+                        Click="game_start" 
+                        HorizontalAlignment="Center" 
+                        FontSize="30" Height="60" 
+                        Width="100">
+                
+                </Button>
+            </TextBlock>
+
+        </Grid>
+        <Grid x:Name="Play"
+              Visibility="Collapsed">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition>
+
+                </ColumnDefinition>
+                <ColumnDefinition>
+                    
+                </ColumnDefinition>
+                <ColumnDefinition>
+                    
+                </ColumnDefinition>    
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition  Height="30">
+
+                </RowDefinition>
+                <RowDefinition Height="200">
+                    
+                </RowDefinition>
+                <RowDefinition Height="120">
+                    
+                </RowDefinition>
+                <RowDefinition Height="120">
+
+                </RowDefinition>
+            </Grid.RowDefinitions>
+
+
+
+
+
+            <Border BorderBrush="Black" 
+                    BorderThickness="0,0,0,2" 
+                    Grid.ColumnSpan="3">
+                <Grid Grid.ColumnSpan="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition
+                            Width="Auto">
+
+                        </ColumnDefinition>
+                        <ColumnDefinition>
+
+                        </ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock FontSize="30"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Left"
+                               Grid.Column="0">
+                        00:00
+                    </TextBlock>
+                    <TextBlock
+                        x:Name="display_name"
+                        HorizontalAlignment="Center"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="3">
+                        Name
+                    </TextBlock>
+                    
+
+                </Grid>
+            </Border>
+            <TextBlock Grid.ColumnSpan="3" 
+                       Grid.Row="1" 
+                       VerticalAlignment="Center" 
+                       HorizontalAlignment="Center" 
+                       FontSize="20">
+
+                This is where the picture would be, if I had one
+
+            </TextBlock>
+            <Border BorderBrush="Black" 
+                    BorderThickness="0,2,0,0" 
+                    Grid.Row="2" 
+                    Grid.ColumnSpan="3">
+                <Grid Grid.Row="2" 
+                      Grid.ColumnSpan="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition
+                            Width="140">
+
+                        </ColumnDefinition>
+                        <ColumnDefinition>
+
+                        </ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel>
+                        <TextBlock x:Name="health"
+                                   Padding="3,0,0,0">
+                    Health : 100/100
+                        </TextBlock>
+                        <TextBlock x:Name="happiness"
+                                   Padding="3,0,0,0">
+                    Happiness : 100/100
+                        </TextBlock>
+                        <TextBlock x:Name="boredom"
+                                   Padding="3,0,0,0">
+                    Boredom
+                        </TextBlock>
+                        <TextBlock x:Name="hunger"
+                                   Padding="3,0,0,0">
+                    Hunger
+                        </TextBlock>
+                        <TextBlock x:Name="mental"
+                                   Padding="3,0,0,0">
+                    Mental
+                        </TextBlock>
+                    </StackPanel>
+                    <StackPanel Grid.ColumnSpan="3" 
+                                Grid.Row="3" 
+                                Grid.Column="3" 
+                                Orientation="Vertical">
+                        <StackPanel Grid.ColumnSpan="3" 
+                                    Grid.Row="3" 
+                                    Grid.Column="3" 
+                                    Orientation="Horizontal">
+                            <TextBlock>
+                            <Button Content="Pet"
+                                    Click="interact_pet">
+                                
+                            </Button>
+                            <Button Content="Feed"
+                                    Click="interact_feed">
+                                
+                            </Button>
+                            <Button Content="Play Game"
+                                    Click="interact_play">
+                                
+                            </Button>
+                            <Button Content="Sleep"
+                                    Click="interact_sleep">
+                                
+                            </Button>
+
+
+                            </TextBlock>
+
+                        </StackPanel>
+                        <TextBlock x:Name="msgBox" 
+                                   Grid.Row="3" 
+                                   Grid.Column="2" 
+                                   Padding="4,0,0,0">
+
+                        </TextBlock>
+                    </StackPanel>
+                    
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+    
+    
+</Window>
